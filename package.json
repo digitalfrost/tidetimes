@@ -1,0 +1,20 @@
+{
+  "name": "tidetimes",
+  "version": "0.0.0",
+  "description": "UK tide times",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tides",
+    "tidal"
+  ],
+  "dependencies": {
+    "crawler": "0.2.6",
+    "yargs": "1.0.15",
+    "moment": "2.7.0"
+  },
+  "author": "alphacoder",
+  "license": "MIT"
+}
