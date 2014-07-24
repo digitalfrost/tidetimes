@@ -15,6 +15,10 @@
     "yargs": "1.0.15",
     "moment": "2.7.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalfrost/tidetimes"
+  },
   "author": "alphacoder",
   "license": "MIT"
 }
