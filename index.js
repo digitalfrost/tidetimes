@@ -1,14 +1,15 @@
+#!/usr/bin/env node
 var Crawler = require("crawler").Crawler;
 var moment = require('moment');
 var argv = require('yargs').argv;
 
 // Default location
 // TODO specify this in a config file
-var location = 'falmouth'
-var date = ''
+var location = 'falmouth';
+var date = '';
 
 // Vaid Date arguments
-dateArgs = ['tomorrow', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+var dateArgs = ['tomorrow', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 // if the location argument starts with @ remove it
 formatLocation = function(location) {
