@@ -3,6 +3,11 @@ var Crawler = require("crawler").Crawler;
 var moment = require('moment');
 var argv = require('yargs').argv;
 
+if (argv.h || argv.help) {
+  console.log("Get UK tide times on the command line\nUsage: tidetimes @falmouth \ntidetimes tomorrow @falmouth\ntidetimes saturday @cowes")
+  process.exit(code=0);
+}
+
 // Default location
 // TODO specify this in a config file
 var location = 'falmouth';
@@ -12,7 +17,7 @@ var date = '';
 var dateArgs = ['tomorrow', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 // if the location argument starts with @ remove it
-formatLocation = function(location) {
+var formatLocation = function(location) {
   if (location[0] === '@') {
     return location.substring(1)
   } else {
@@ -26,20 +31,20 @@ if (argv._.length == 1) {
   if (index > -1 ){
     if (index == 0) {
       date = moment().add('days', 1).format('-YYYYMMDD')
-    }else {
+    } else {
       date = moment().day(index).format('-YYYYMMDD')
     }
-  }else {
+  } else {
     location = formatLocation(argv._[0])
   }
-}else if (argv._.length == 2) {
+} else if (argv._.length == 2) {
   // two arguments provided
   // first argument should be date related
   // second argument shoudl be a location
   var index = dateArgs.indexOf(argv._[0])
   if (index == 0) {
     date = moment().add('days', 1).format('-YYYYMMDD')
-  }else {
+  } else {
     date = moment().day(index).format('-YYYYMMDD')
   }
   location = formatLocation(argv._[1])
