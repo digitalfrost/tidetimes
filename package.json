@@ -23,6 +23,10 @@
   "bin": {
     "tidetimes" : "index.js"
   },
-  "author": "alphacoder",
+  "author": {
+    "name": "alphacoder",
+    "email": "gerald@thealphacoder.com",
+    "url": "http://www.thealphacoder.com"
+  },
   "license": "MIT"
 }
