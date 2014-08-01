@@ -54,7 +54,7 @@ if (argv._.length == 1) {
 var uri = 'http://www.tidetimes.co.uk/'+location+'-tide-times'+date
 
 // Format the scaped tide times by removing extra spaces, adding a line break after m, and removing the leading spaces
-formatTimes = function(times) {
+formatTideTimes = function(times) {
   return times.replace(/\s+/g, " ").replace(/m /g, "m\n").substring(1)
 }
 
@@ -67,7 +67,7 @@ var c = new Crawler({
     
     if(!error && result.statusCode === 200){
       var times = $(".times").text();
-      console.log(formatTimes(times));
+      console.log(formatTideTimes(times));
     }else{
       console.log('No data available for this location')
     }
