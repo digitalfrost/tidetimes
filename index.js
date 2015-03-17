@@ -10,9 +10,6 @@ if (argv.h || argv.help) {
 
 function TideCrawler(argv) {
 
-  //inherit from node-crawler
-  Crawler.call(this);
-
   this.location = 'falmouth';  //Default location
   this.date = '';
 
@@ -84,7 +81,7 @@ function TideCrawler(argv) {
     }
     });
 
-    // !!!! Need to call formatTideTimes after c.queue completes !!!!        
+    // TODO !!!! Need to call formatTideTimes after c.queue completes !!!!        
     this.formatTideTimes(c.queue(this.uri));
   }
 
