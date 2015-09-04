@@ -13,7 +13,8 @@
   "dependencies": {
     "crawler": "0.2.6",
     "yargs": "1.0.15",
-    "moment": "2.7.0"
+    "moment": "2.7.0",
+    "synchronize" : "0.9.4"
   },
   "repository": {
     "type": "git",

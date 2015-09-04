@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-var Crawler = require("crawler").Crawler;
 var moment = require('moment');
 var argv = require('yargs').argv;
+var sync = require('synchronize');
+var scraperjs = require('scraperjs');
 
 if (argv.h || argv.help) {
   console.log("Get UK tide times on the command line\nUsage: tidetimes @falmouth \ntidetimes tomorrow @falmouth\ntidetimes saturday @cowes")
@@ -22,7 +23,7 @@ function TideCrawler(argv) {
     }
   }
 
-  // takes tomorrow or a day of the week and converts it to a date url fragment 
+  // takes tomorrow or a day of the week and converts it to a date url fragment
   this.formatDate = function(day) {
     // Vaid Day arguments
     var dayArgs = ['tomorrow', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
@@ -35,11 +36,11 @@ function TideCrawler(argv) {
         var date = moment().day(index).format('-YYYYMMDD');
       }
       return date;
-    } 
+    }
   }
 
   // Format the scaped tide times by removing extra spaces, adding a line break after m, and removing the leading spaces
-  this.formatTideTimes = function(times) {
+  function formatTideTimes (times) {
     return times.replace(/\s+/g, " ").replace(/m /g, "m\n").substring(1)
   }
 
@@ -68,25 +69,17 @@ function TideCrawler(argv) {
   this.getTimes = function(){
 
     // Scrape the data
-    var c = new Crawler({
-    "maxConnections":1,
+    scraperjs.StaticScraper.create(this.uri)
+      .scrape(function($) {
+         return $(".times").text();
+     }, function(tides) {
+          console.log(formatTideTimes(tides));
+      })
 
-    "callback":function(error,result,$) {
-        
-        if(!error && result.statusCode === 200){
-          return $(".times").text();
-        }else{
-          return 'No data available for this location'
-        }
-    }
-    });
-
-    // TODO !!!! Need to call formatTideTimes after c.queue completes !!!!        
-    this.formatTideTimes(c.queue(this.uri));
   }
-
 
 }
 
 var tides = new TideCrawler(argv);
+console.log(tides.uri);
 console.log(tides.getTimes());
