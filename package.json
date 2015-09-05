@@ -1,8 +1,8 @@
 {
   "name": "tidetimes",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "UK tide times",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
