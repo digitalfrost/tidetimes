@@ -31,7 +31,7 @@ Displays UK tide times on the command line
 
 ## Available locations
 
-700 UK locations available. 
+700 UK locations available.
 Full list is available here: http://www.tidetimes.co.uk/locations
 
 ### The @ symbol is optional when specifying the location
@@ -47,6 +47,10 @@ Full list is available here: http://www.tidetimes.co.uk/locations
       High Tide: 08:45 Height: 2.10m
       Low Tide: 14:28 Height: 0.90m
       High Tide: 20:59 Height: 2.40m
+
+### Default location
+
+Default location is Falmouth. You can set your own default location by creating a .tidetimes file in your home directory containing the name of the location
 
 ## Disclaimer
 
